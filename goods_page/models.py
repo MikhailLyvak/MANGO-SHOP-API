@@ -15,7 +15,7 @@ class SexEnum(Enum):
 
 
 class Product(models.Model):
-    name = models.CharField(max_length=255, unique=True)
+    name = models.CharField(max_length=255)
     description = models.TextField(blank=True)
     size = models.CharField(
         max_length=2, choices=[(choice.value, choice.name) for choice in SizeEnum]
@@ -24,6 +24,8 @@ class Product(models.Model):
         max_length=6, choices=[(choice.value, choice.name) for choice in SexEnum]
     )
     price = models.FloatField()
+    inventory = models.PositiveIntegerField(default=0)
+    image = models.ImageField(null=True)
     on_discount = models.BooleanField(default=False)
     discount = models.PositiveIntegerField(default=17)
     discount_start_date = models.DateTimeField(null=True)

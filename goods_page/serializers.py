@@ -15,6 +15,8 @@ class ProductSerializer(serializers.ModelSerializer):
             "price_with_discount",
             "on_discount",
             "discount",
+            "image",
+            "inventory",
             "discount_start_date",
             "discount_start_end"
         ]
@@ -38,6 +40,8 @@ class ProductListSerializer(serializers.ModelSerializer):
             "price_with_discount",
             "on_discount",
             "discount",
+            "inventory",
+            "image",
             "discount_start_date",
             "discount_start_end"
         ]
@@ -53,6 +57,8 @@ class ProductDetailSerializer(serializers.ModelSerializer):
             "size",
             "sex",
             "price",
+            "image",
+            "inventory",
             "price_with_discount",
             "on_discount",
             "discount",
