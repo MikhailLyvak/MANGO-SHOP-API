@@ -1,8 +1,7 @@
-from celery import shared_task
 from .models import Product
+from django_q.tasks import schedule
 
 
-@shared_task
 def remove_discount(product_id):
     try:
         product = Product.objects.get(pk=product_id)
@@ -13,3 +12,12 @@ def remove_discount(product_id):
             product.save()
     except Product.DoesNotExist:
         pass
+
+
+def schedule_remove_discount(product_id, end_time):
+    schedule(
+        "goods_page.tasks.remove_discount",
+        product_id,
+        schedule_type="O",
+        next_run=end_time,
+    )
